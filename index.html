@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="intro" class="intro">
+        <div id="introText" class="intro-text">
+            <span class="word">Audrey,</span>
+            <span class="word">no</span>
+            <span class="word">matter</span>
+            <span class="word">what</span>
+            <span class="word">happens,</span>
+            <span class="word">you're</span>
+            <span class="word">my</span>
+            <span class="word">favorite</span>
+        </div>
+        <button id="continueButton" class="pill-button hidden">Continue</button>
+    </div>
+    <div id="mainContent" class="hidden">
+        <div id="startBubble" class="bubble black">Start</div>
+        <div id="homeBubble" class="bubble red">Home</div>
+        <div id="hahaBubble" class="bubble green">Haha</div>
+        <div id="friendsBubble" class="bubble blue">Friends</div>
+        <div id="betterBubble" class="bubble purple">Better</div>
+        <div id="coffeeBubble" class="bubble tan">Coffee</div>
+        <div id="caringBubble" class="bubble orange">Caring</div>
+        <div id="brainBubble" class="bubble pink">Brain</div>
+        
+        <div id="splashContainer" class="splash-container">
+            <div id="splash" class="splash"></div>
+        </div>
+        <div id="textBlock" class="text-block">
+            <span class="close">&times;</span>
+            <p id="message"></p>
+        </div>
+
+        <audio id="backgroundMusic" loop>
+            <source src="music.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
