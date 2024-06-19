@@ -194,42 +194,42 @@ document.addEventListener('DOMContentLoaded', () => {
         continueButton.classList.remove('hidden');
         continueButton.classList.add('visible');
     }, totalWordsDuration * 1000);
-});
 
-let isDragging = false;
-let startX, startY, startTime;
+    let isDragging = false;
+    let startX, startY, startTime;
 
-function onPointerDown(event, bubble) {
-    isDragging = true;
-    startX = event.clientX || event.touches[0].clientX;
-    startY = event.clientY || event.touches[0].clientY;
-    startTime = Date.now();
-    event.preventDefault();
-}
+    function onPointerDown(event, bubble) {
+        isDragging = true;
+        startX = event.clientX || event.touches[0].clientX;
+        startY = event.clientY || event.touches[0].clientY;
+        startTime = Date.now();
+        event.preventDefault();
+    }
 
-function onPointerUp(event, bubble) {
-    if (!isDragging) return;
-    isDragging = false;
-    const endX = event.clientX || event.changedTouches[0].clientX;
-    const endY = event.clientY || event.changedTouches[0].clientY;
-    const endTime = Date.now();
+    function onPointerUp(event, bubble) {
+        if (!isDragging) return;
+        isDragging = false;
+        const endX = event.clientX || event.changedTouches[0].clientX;
+        const endY = event.clientY || event.changedTouches[0].clientY;
+        const endTime = Date.now();
 
-    const deltaX = endX - startX;
-    const deltaY = endY - startY;
-    const deltaTime = (endTime - startTime) / 1000; // time in seconds
+        const deltaX = endX - startX;
+        const deltaY = endY - startY;
+        const deltaTime = (endTime - startTime) / 1000; // time in seconds
 
-    if (deltaTime === 0) return;
+        if (deltaTime === 0) return;
 
-    const velocityX = deltaX / deltaTime;
-    const velocityY = deltaY / deltaTime;
+        const velocityX = deltaX / deltaTime;
+        const velocityY = deltaY / deltaTime;
 
-    bubble.vx = velocityX * 0.01; // Adjust the multiplier to control speed
-    bubble.vy = velocityY * 0.01;
-}
+        bubble.vx = velocityX * 0.01; // Adjust the multiplier to control speed
+        bubble.vy = velocityY * 0.01;
+    }
 
-bubbleObjects.forEach(bubble => {
-    bubble.element.addEventListener('mousedown', (e) => onPointerDown(e, bubble));
-    bubble.element.addEventListener('touchstart', (e) => onPointerDown(e, bubble));
-    bubble.element.addEventListener('mouseup', (e) => onPointerUp(e, bubble));
-    bubble.element.addEventListener('touchend', (e) => onPointerUp(e, bubble));
+    bubbleObjects.forEach(bubble => {
+        bubble.element.addEventListener('mousedown', (e) => onPointerDown(e, bubble));
+        bubble.element.addEventListener('touchstart', (e) => onPointerDown(e, bubble));
+        document.addEventListener('mouseup', (e) => onPointerUp(e, bubble));
+        document.addEventListener('touchend', (e) => onPointerUp(e, bubble));
+    });
 });
